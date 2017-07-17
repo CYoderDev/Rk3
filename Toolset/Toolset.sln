@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolset", "Toolset\Toolset.csproj", "{548BCE1A-1534-4F6A-B6F8-5148B23B96B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsetTest", "ToolsetTest\ToolsetTest.csproj", "{BC0B6115-DF74-462C-96B4-2D80ADCC2EDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{548BCE1A-1534-4F6A-B6F8-5148B23B96B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548BCE1A-1534-4F6A-B6F8-5148B23B96B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548BCE1A-1534-4F6A-B6F8-5148B23B96B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548BCE1A-1534-4F6A-B6F8-5148B23B96B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0B6115-DF74-462C-96B4-2D80ADCC2EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0B6115-DF74-462C-96B4-2D80ADCC2EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0B6115-DF74-462C-96B4-2D80ADCC2EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0B6115-DF74-462C-96B4-2D80ADCC2EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
