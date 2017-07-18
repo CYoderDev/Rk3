@@ -11,40 +11,32 @@ namespace ToolsetTest
         [TestMethod]
         public void Median_WithValidArrayType_ReturnsMedianValue()
         {
-            int[][] arrays = new int[5][];
-            Random randomSize = new Random();
-            for (int i = 0; i < arrays.Length; i++)
+            Random randomNum = new Random();
+            for (int i = 0; i < 5; i++)
             {
-                arrays[i] = generateRandomIntArray(1, 1000, randomSize.Next(1, 200));
+                int[] array = generateRandomIntArray(1, 1000, randomNum.Next(1, 200)).Distinct().ToArray();
                 //int selectIndex = randomSize.Next(1, arrays[i].Length);
-                int selectIndex = arrays[i].Length / 2;
-                ArrayCalculator<int> arrCalc = new ArrayCalculator<int>(arrays[i]);
-                var med = arrCalc.GetMedian();
-                Assert.IsTrue(med > arrays[i].Min() && med < arrays[i].Max());
-                Assert.AreEqual(arrays[i].OrderBy(x => x).ElementAt(selectIndex), med, 
-                    string.Format("\nIndex: {0}\n{1}",selectIndex, string.Join(System.Environment.NewLine, arrays[i].OrderBy(x => x))));
+                int selectIndex = array.Length / 2;
+                var med = ArrayCalculator.MedianOfMedians(array, selectIndex);
+                Assert.IsTrue(med >= array.Min() && med <= array.Max(), 
+                    string.Format("(Med){0} >= {1} && =< {2}", med, array.Min(), array.Max()));
+                Assert.AreEqual(array.OrderBy(x => x).ElementAt(selectIndex), med, 
+                    string.Format("\nIndex: {0}\n{1}",selectIndex, string.Join(System.Environment.NewLine, 
+                    array.OrderBy(x => x))));
             }
         }
 
         [TestMethod]
-        public void Median_WithInvalidArrayType_ThrowsException()
+        public void Median_WithPreDeterminedArray_ReturnsSmallestNthValue()
         {
-            try
-            {
-                string[] arrString = new string[]{"t1","t2"};
-                ArrayCalculator<string> arrCalc = new ArrayCalculator<string>(arrString);
-                arrCalc.GetMedian();
-            }
-            catch (NotSupportedException ex)
-            {
-                StringAssert.Contains(ex.Message, "Cannot get median of array that is of type");
-                return;
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Incorrect exception type was thrown.");
-            }
-            Assert.Fail("No exception was thrown");
+            int[] array = new int[] { 10, 1, 5, 20, 15, 3, 6, 21, 32, 16, 0, 10, 16 };
+            int selectIndex = array.Length / 2;
+            var med = ArrayCalculator.MedianOfMedians(array, selectIndex);
+            Assert.IsTrue(med >= array.Min() && med <= array.Max(),
+                    string.Format("(Med){0} >= {1} && =< {2}", med, array.Min(), array.Max()));
+            Assert.AreEqual(array.OrderBy(x => x).ElementAt(selectIndex), med,
+                string.Format("\nIndex: {0}\n{1}", selectIndex, string.Join(System.Environment.NewLine,
+                array.OrderBy(x => x))));
         }
 
         private int[] generateRandomIntArray(int MinVal, int MaxVal, int Size)
