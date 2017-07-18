@@ -34,7 +34,7 @@ namespace ToolsetTest
             var med = ArrayCalculator.MedianOfMedians(array, selectIndex);
             Assert.IsTrue(med >= array.Min() && med <= array.Max(),
                     string.Format("(Med){0} >= {1} && =< {2}", med, array.Min(), array.Max()));
-            Assert.AreEqual(array.OrderBy(x => x).ElementAt(selectIndex), med,
+            Assert.AreEqual(array.Distinct().OrderBy(x => x).ElementAt(selectIndex), med,
                 string.Format("\nIndex: {0}\n{1}", selectIndex, string.Join(System.Environment.NewLine,
                 array.OrderBy(x => x))));
         }
