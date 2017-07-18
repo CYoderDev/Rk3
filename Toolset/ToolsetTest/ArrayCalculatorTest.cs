@@ -39,6 +39,17 @@ namespace ToolsetTest
                 array.OrderBy(x => x))));
         }
 
+        [TestMethod]
+        public void QuickSort_WithPreDeterminedArray_SortsNumerically()
+        {
+            int[] array = new int[] { 10, 1, 5, 20, 15, 3, 6, 21, 32, 16, 0, 10, 16 };
+            ArrayCalculator.Quicksort(array, 0, array.Length - 1);
+            CollectionAssert.AreEqual(array.OrderBy(x => x).ToArray(), array, 
+                string.Format("\nExpected: {0}\nActual: {1}", 
+                    string.Join(",", array.OrderBy(x => x).ToArray()),
+                    string.Join(",", array)));
+        }
+
         private int[] generateRandomIntArray(int MinVal, int MaxVal, int Size)
         {
             int[] ret = new int[Size];

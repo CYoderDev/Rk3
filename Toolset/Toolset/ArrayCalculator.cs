@@ -36,7 +36,7 @@ namespace Rk3.Toolset
 
             for (var i = 0; i < arrSubsets.Length; i++)
             {
-                Array.Sort(arrSubsets[i]);
+                ArrayCalculator.Quicksort(arrSubsets[i], 0, arrSubsets[i].Length - 1);
                 arrSubGrpMedians[i] = arrSubsets[i][arrSubsets[i].Length / 2];
             }
 
@@ -59,6 +59,50 @@ namespace Rk3.Toolset
                 return MedianOfMedians(high, index - k - 1);
             else
                 return iMedian;
+        }
+
+        public static void Quicksort(int[] a, int left, int right)
+        {
+            if (left < right)
+            {
+                int iPivot = ArrayCalculator.partition(a, left, right);
+
+                if (iPivot > 1)
+                    Quicksort(a, left, iPivot - 1);
+
+                if (iPivot + 1 < right)
+                    Quicksort(a, iPivot + 1, right);
+            }
+        }
+
+        private static int partition(int[] a, int left, int right)
+        {
+            int iPivot = a[left];
+
+            while(true)
+            {
+                while (a[left] < iPivot)
+                    left++;
+
+                while (a[right] > iPivot)
+                    right--;
+
+                if (a[right] == iPivot && a[left] == iPivot)
+                {
+                    left++;
+                }
+
+                if (left < right)
+                {
+                    int iTmp = a[right];
+                    a[right] = a[left];
+                    a[left] = iTmp;
+                }
+                else
+                {
+                    return right;
+                }
+            }
         }
     }
 }
