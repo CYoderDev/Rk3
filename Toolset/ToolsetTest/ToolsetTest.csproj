@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ArrayCalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordSearchTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Toolset\Toolset.csproj">
